@@ -8,3 +8,8 @@
         state: present
         update_cache: yes
       become: true
+    - name: Start nginx at boot
+      service:
+        name: nginx
+        state: started
+        enabled: true

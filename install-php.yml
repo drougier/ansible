@@ -1,0 +1,11 @@
+---
+- name: Install PHP
+  hosts: "dev"
+  vars_file: staging\hosts_vars\var-php_version.yml
+  tasks:
+    - name: install PHP version {{ php_version }}
+      apt:
+        name: proftpd-basic
+        state: present
+        update_cache: yes
+      become: true
