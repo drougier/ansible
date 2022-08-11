@@ -2,12 +2,6 @@
 - name: Install all required tools for a web server to function
   hosts: "dev"
   tasks:
-    - name: install ufw
-      apt:
-        name: ufw
-        state: present
-        update_cache: yes
-      become: true
     - name: Default policy
       ufw:
         state: enabled

@@ -1,0 +1,10 @@
+---
+- name: Install ProFTPd
+  hosts: "dev"
+  tasks:
+    - name: install proftpd-basic, FTP server
+      apt:
+        name: proftpd-basic
+        state: present
+        update_cache: yes
+      become: true

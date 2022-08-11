@@ -1,8 +1,0 @@
-- hosts: "*"
-  become: yes
-  tasks:
-    - name: Add SSH public keys
-      authorized_key:
-        user: root
-        state: present
-        key: somepath
