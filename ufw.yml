@@ -1,0 +1,37 @@
+---
+- name: Install all required tools for a web server to function
+  hosts: "dev"
+  tasks:
+    - name: install ufw
+      apt:
+        name: ufw
+        state: present
+        update_cache: yes
+      become: true
+    - name: Default policy
+      ufw:
+        state: enabled
+        policy: allow
+        logging: 'on'
+    - name: Allow SSH
+      ufw:
+        rule: allow
+        name: SSH
+    - name: Allow HTTP
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+    - name: Allow HTTPS
+      ufw:
+        rule: allow
+        port: '443'
+        proto: tcp
+    - name: Allow all access from RFC1918 networks to this host
+      ufw:
+        rule: allow
+        src: '{{ item }}'
+      loop:
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
