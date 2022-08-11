@@ -1,0 +1,10 @@
+---
+- name: Install all required tools for a web server to function
+  hosts: "dev"
+  tasks:
+    - name: install nginx-full
+      apt:
+        name: nginx-full
+        state: present
+        update_cache: yes
+      become: true

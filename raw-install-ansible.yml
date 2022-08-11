@@ -1,0 +1,9 @@
+---
+- name: Install ansible on remote host
+  hosts: all
+
+  tasks:
+    - name: Install ansible
+      raw: apt-get update && apt-get install python -y
+
+
